@@ -1,8 +1,20 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Play } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import Header from './component/header';
+import Footer from './component/footer';
+
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+
+const play = Play({
+  subsets: ['latin'],
+  weight:["700"],
+  display: 'swap',
+  variable: '--font-play',
+}) // google fonts 
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +27,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${play.variable}`}>
+      <body>
+          <Header/>
+          {children}
+          <Footer/>
+      </body>
     </html>
   )
 }
