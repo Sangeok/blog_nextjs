@@ -1,9 +1,10 @@
-
+import Posts from "@/components/Posts";
 
 const Home:React.FC = () => {
+  
   return (
-    <div>
-      home
+    <div className="py-10">
+      <Posts />
     </div>
   )
 }
