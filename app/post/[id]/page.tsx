@@ -25,16 +25,16 @@ const Post = (props: any) => {
     // 현재 주소창에 있는 id위치에 있는 값을 가져옴.
     const id = props.params.id;
 
-    // getPostContent로 반환된 값은 md파일 내용 그 자체임 하지만 object 형태로 되어있으므로 쓸 수 있음.
+    // getPostContent로 반환된 값은 md파일 내용 그 자체. 하지만 JSON 형태로 되어있으므로 쓸 수 있음.
     const postData = getPostContent(id);
     
     return (
-        <div className="py-10">
-            <div className="font-bold ">{postData.data.title}</div>
-            <h2>{postData.data.date}</h2>
-            <article className="prose lg:prose-xl">
-                <Markdown>{postData.content}</Markdown>
-            </article>
+        <div className="max-w-screen-sm py-10 mx-auto">
+                <div className="text-4xl my-3">{postData.data.title}</div>
+                <h2>{postData.data.date}</h2>
+                <article className="prose prose-sm">
+                    <Markdown>{postData.content}</Markdown>
+                </article>
         </div>
     )
 }

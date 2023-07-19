@@ -7,7 +7,9 @@ const FilePath = 'posts'
 const postsDirectory = path.join(process.cwd(), FilePath);
 
 export const getAllPosts = () => {
+    // /posts에 존재하는 .md파일들이 array 형태로 존재함.
     const fileNames = fs.readdirSync(postsDirectory);
+
     const allPostData = fileNames.map((fileName)=> {
         // ".md"를 파일 이름으로부터 제거하여 id를 얻음.(.md만 제거한 파일 이름이 id가 됨.) => 이후 blogPost들에 대한 dynamic routing을 위함
         const id = fileName.replace(/\.md$/, '');
@@ -17,9 +19,10 @@ export const getAllPosts = () => {
         const fullPath = path.join(postsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath,'utf8');
 
-        // gray-matter를 이용하여 metadata를 파싱함.
+        // gray-matter를 이용하여 front-matter를 파싱함.
         const matterReulst = matter(fileContents);
 
+        // 파싱한 결과를 blogPost로 나타냄.
         const blogPost : BlogPost = {
             id,
             title : matterReulst.data.title,
