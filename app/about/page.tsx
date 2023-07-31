@@ -44,10 +44,13 @@ const About:React.FC = () => {
                         Project
                     </div>
                     <div className="pb-2 indent-1 text-sm text-gray-700">
-                        1. 요양시설 중개
+                        1. 요양시설 중개(ing)
                     </div>
                     <div className="pb-2 indent-1 text-sm text-gray-700">
-                        2. Nextjs 개인 블로그
+                        2. 개인 블로그
+                    </div>
+                    <div className="pb-2 indent-1 text-sm text-gray-700">
+                        3. RealTime Chatting(ing)
                     </div>
                 </div>
             </div>

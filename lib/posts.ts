@@ -35,5 +35,4 @@ export const getAllPosts = () => {
 
     // 날짜순으로 sort해서 blogPost를 보여주도록 함.
     return allPostData.sort((a,b)=>a.date < b.date ? 1 : -1);
-
 }

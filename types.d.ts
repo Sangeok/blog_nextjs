@@ -4,3 +4,8 @@ type BlogPost = {
     subtitle : string,
     date : string
 }
+
+type PageIndex = {
+    start : number,
+    end : number,
+}
