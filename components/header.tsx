@@ -1,5 +1,6 @@
 import Link from "next/link";
 import IndicatorScroll from "./IndicatorScroll";
+import ThemeButton from "./ThemeButton";
 
 const Header:React.FC = () => {
 
@@ -13,6 +14,7 @@ const Header:React.FC = () => {
                 <div>
                     <span className="px-5"><Link href="/post">Post</Link></span>
                     <span className="px-5"><Link href="/about">About</Link></span>
+                    <span className="px-5"><ThemeButton/></span>
                 </div>
             </div>
             <IndicatorScroll />

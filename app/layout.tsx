@@ -7,6 +7,7 @@ import Footer from '../components/footer';
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Prodivers from '@/app/Providers';
 config.autoAddCss = false;
 
 const play = Play({
@@ -29,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${play.variable}`}>
       <body>
+      <Prodivers>
           <Header/>
           {children}
           <Footer/>
+      </Prodivers>
       </body>
     </html>
   )

@@ -21,6 +21,7 @@ const Posts:React.FC<PageIndex> = ({start, end}) => {
                     ))
                 }
                 <PaginationControls totalPosts={postsMetadata.length}/>
+                
             </div>
         </div>
     )
