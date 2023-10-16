@@ -10,7 +10,6 @@ interface PaginationControlsProps {
 const PaginationControls: FC<PaginationControlsProps> = (
     {
         totalPosts,
-
     }
 ) => {
     const router = useRouter();
@@ -28,27 +27,38 @@ const PaginationControls: FC<PaginationControlsProps> = (
 
     return (
         <div className="flex">
-            <button onClick={()=>{
-                router.push(`/?page=${Number(page)-1}&perPage=${perPage}`)
-            }}>
-            prev page
-            </button>
-            <div>
+            {
+                (Number(page)> 1) && 
+                <button className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" onClick={()=>{
+                    router.push(`/?page=${Number(page)-1}&perPage=${perPage}`)
+                }}>
+                    Previous
+                </button>
+            }
+            <div className="flex flex-row">
                 {
-                    pages.map((page, i)=>{
+                    pages.map((pageNumber, i)=>{
                         return (
-                            <button key={i} onClick={()=>{
-                                router.push(`/?page=${Number(page)}&perPage=${perPage}`)
-                            }}>{page}</button>
+                            (Number(page) === pageNumber) ? 
+                            <button className="relative block rounded bg-primary-100 px-3 py-1.5 text-sm font-medium text-primary-700 transition-all duration-300" key={i} onClick={()=>{
+                                router.push(`/?page=${Number(pageNumber)}&perPage=${perPage}`)
+                            }}>{pageNumber}</button>
+                            :
+                            <button className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" key={i} onClick={()=>{
+                                router.push(`/?page=${Number(pageNumber)}&perPage=${perPage}`)
+                            }}>{pageNumber}</button>
                         )
                     })
                 }
             </div>
-            <button onClick={()=>{
-                router.push(`/?page=${Number(page)+1}&perPage=${perPage}`)
-            }}>
-            next page
-            </button>
+            {
+                (Number(page) < totalPages) && 
+                <button className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white" onClick={()=>{
+                    router.push(`/?page=${Number(page)+1}&perPage=${perPage}`)
+                }}>
+                    next page
+                </button>
+            }
         </div>
     )
 }
