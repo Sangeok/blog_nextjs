@@ -2,6 +2,7 @@ import { getAllPosts } from "@/lib/posts";
 import fs from "fs";
 import matter from "gray-matter";
 import Markdown from 'markdown-to-jsx';
+import Comment from "../../../components/Comments";
 
 const getPostContent = (id : string) => {
     const FilePath = 'posts';
@@ -22,6 +23,11 @@ export const generateStaticParams = async () => {
 };
 
 const Post = (props: any) => {
+    const repo = process.env.COMMENTS_REPO;
+	const repoId = process.env.COMMENTS_REPO_ID;
+	const category = process.env.COMMENTS_CATEGORY;
+	const categoryId = process.env.COMMENTS_CATEGORY_ID;
+
     // 현재 주소창에 있는 id위치에 있는 값을 가져옴.
     const id = props.params.id;
 
@@ -35,6 +41,7 @@ const Post = (props: any) => {
                 <article className="prose prose-sm">
                     <Markdown>{postData.content}</Markdown>
                 </article>
+                <Comment repo={repo} repoId={repoId} category={category} categoryId={categoryId} />
         </div>
     )
 }

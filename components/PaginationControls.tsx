@@ -2,6 +2,7 @@
 
 import { FC } from "react"
 import { useRouter,useSearchParams } from 'next/navigation';
+import { slicePageArr } from "@/lib/slicePageArr";
 
 interface PaginationControlsProps {
     totalPosts : number,
@@ -12,6 +13,9 @@ const PaginationControls: FC<PaginationControlsProps> = (
         totalPosts,
     }
 ) => {
+
+
+
     const router = useRouter();
     const searchParams = useSearchParams()
 
@@ -19,7 +23,9 @@ const PaginationControls: FC<PaginationControlsProps> = (
     const perPage = searchParams.get('perPage') ?? '5';
 
     let pages:number[] = [];
+    
     let totalPages:number =  Math.ceil(totalPosts/Number(perPage));
+    let slicePages:number[][] = slicePageArr(totalPages,Number(perPage));
     for(let i:number = 1; i<=totalPages; i++) {
         pages.push(i);
     }
